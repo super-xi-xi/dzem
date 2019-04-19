@@ -1,0 +1,2355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>上交电</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="js/echarts.min.js"></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript" src="js/wsd_echarts.js"></script>
+	<script type="text/javascript" src="js/jquery.tmpl.js"></script>
+	<script type="text/javascript" src="js/base64.js"></script>
+	<style type="text/css">
+		.two-table-tit {
+			box-sizing: border-box;
+		}
+
+		.two-table-tit span {
+			width: 12% !important;
+			box-sizing: border-box;
+		}
+
+		.two-table-tit span:nth-of-type(2) {
+			width: 40% !important;
+		}
+
+		.two-table-tit2 span {
+			width: 16% !important;
+		}
+
+		.two-table-tit2 span:nth-of-type(2) {
+			width: 36% !important;
+		}
+
+		.two-tab-mess span {
+			width: 12% !important;
+			box-sizing: border-box;
+		}
+
+		.two-tab-mess span:nth-of-type(2) {
+			width: 40% !important;
+		}
+
+		.two-tab-mess2 span {
+			width: 16% !important;
+		}
+
+		.two-tab-mess2 span:nth-of-type(2) {
+			width: 36% !important;
+		}
+
+		.two-mid .two-mid-table {
+			height: 96%;
+		}
+
+		.two-mid .two-tab-mess {
+			height: calc(100% - 36px);
+		}
+
+		.bd {
+			height: 100%;
+		}
+
+		::-webkit-scrollbar {
+			width: 5px;
+			height: 10px;
+		}
+
+		::-webkit-scrollbar-button:vertical {
+			display: none;
+		}
+
+		::-webkit-scrollbar-thumb {
+			border-radius: 0;
+			background-color: rgba(0, 0, 0, .3);
+		}
+
+		::-webkit-scrollbar-thumb:vertical:hover {
+			background-color: rgba(0, 0, 0, .35);
+		}
+
+		::-webkit-scrollbar-thumb:vertical:active {
+			background-color: rgba(0, 0, 0, .38);
+		}
+
+		@media screen and (max-width: 1366px) {
+			.magaDiv .magContent .top .item p a {
+				font-size: 16px !important;
+			}
+
+			.magaDiv .magContent #excpTot .item p a {
+				font-size: 25px !important;
+			}
+
+			.magaDiv .magContent #excpTot .item h4 {
+				font-size: 25px !important;
+				height: 30px !important;
+				line-height: 30px !important;
+			}
+
+			.magaDiv .magContent .top .item h4 {
+				font-size: 16px !important;
+				height: 30px !important;
+				line-height: 30px !important;
+			}
+
+			.magaDiv .header,
+			.magaDiv .foot {
+				font-size: 21px;
+			}
+
+			.magaDiv .magContent .bottom .table tr th {
+				font-size: 16px;
+			}
+
+			.magaDiv .magContent .bottom .table tr td {
+				font-size: 16px;
+			}
+
+			.unDone5 ul li {
+				font-size: 14px;
+			}
+
+			.unDone6 ul li {
+				font-size: 14px;
+			}
+
+			.unDone7 ul li {
+				font-size: 14px;
+			}
+
+			.div-gun3 ul li:first-child {
+				width: 10% !important;
+			}
+
+			.two-left-cont .picList li {
+				height: 53%;
+			}
+		}
+
+		.div-gun5 ul {
+			width: 100%;
+			overflow: hidden;
+		}
+
+		.div-gun5 ul li {
+			float: left;
+			width: 25%;
+			height: 40px;
+			line-height: 40px;
+			font-size: 17px;
+			font-weight: bold;
+			background: none;
+		}
+
+		.div-gun5 .color-change li {
+			background: #00b0f0 !important;
+		}
+
+		.cost .color-change2 {
+			background: #D9EDF6;
+			overflow: hidden;
+		}
+
+		.cost .color-change2 li {
+			float: left;
+			width: 20%;
+			height: 40px;
+			line-height: 40px;
+			color: #ffffff;
+			background: #069DA8 !important;
+		}
+
+		.cost .excp2 ul {
+			border-left: 1px solid #f5f5f5;
+			border-right: 1px solid #f5f5f5;
+			overflow: hidden;
+		}
+
+		.cost .excp2 ul li {
+			float: left;
+			width: 20%;
+			height: 30px;
+			line-height: 30px;
+			border-bottom: 1px solid #f5f5f5;
+			color: #ffffff;
+		}
+
+		.elec-one .elec-top {
+			width: 100%;
+			height: 10%;
+			align-items: center;
+			display: -webkit-flex;
+			justify-content: center;
+		}
+
+		.elec-one .elec-top .one,
+		.elec-one .elec-top .two {
+			color: #fff;
+		}
+
+		.elec-one .elec-top .one {
+			font-size: 20px;
+			margin-right: 10px;
+
+		}
+
+		.elec-one .elec-top .two {
+			font-size: 25px;
+			vertical-align: middle;
+		}
+
+		.elec-one .elec-bottom {
+			width: 100%;
+			height: 90%;
+		}
+
+		.elec-two .elec-top {
+			width: 100%;
+			height: 15%;
+		}
+
+		.elec-two .elec-top table {
+			width: 100%;
+			height: 100%;
+			border-right: 1px solid #fff;
+			border-top: 1px solid #fff;
+		}
+
+		.elec-two .elec-top table tr th,
+		.elec-two .elec-top table tr td {
+			color: #fff;
+			border-left: 1px solid #fff;
+			border-bottom: 1px solid #fff;
+		}
+
+		.elec-two .elec-top table tr th {
+			border-top: 1px solid #fff;
+			font-size: 21px;
+		}
+
+		.elec-two .elec-main {
+			width: 100%;
+			height: 85%;
+		}
+
+		.elec-three .elec-top {
+			width: 100%;
+			height: 23%;
+		}
+
+		.elec-three .elec-top table {
+			width: 99.9%;
+			height: 100%;
+			border-right: 1px solid #fff;
+			border-top: 1px solid #fff;
+
+		}
+
+		.elec-three .elec-top table tr th,
+		.elec-three .elec-top table tr td {
+			color: #fff;
+			border-left: 1px solid #fff;
+			border-bottom: 1px solid #fff;
+		}
+
+		.elec-three .elec-top table tr th {
+			border-top: 1px solid #fff;
+			font-size: 18px;
+		}
+
+		.elec-three .elec-top table tr td {
+			font-size: 12px;
+		}
+
+		.elec-three .elec-main {
+			width: 100%;
+			height: 77%;
+		}
+
+		@media screen and (max-width: 1600px) {
+			.elec-three .elec-main {
+				width: 100%;
+				height: 40%;
+			}
+
+			.elec-three .elec-top {
+				width: 100%;
+				height: 60%;
+			}
+
+			.elec-one .elec-top .one {
+				font-size: 15px;
+			}
+
+			.elec-one .elec-top .two {
+				font-size: 22px;
+			}
+
+			.two-left-cont .bd .pic-list-mess p {
+				font-size: 12px;
+			}
+
+			.magaDiv .magContent .item h4 {
+				font-size: 12px !important;
+			}
+
+			.magaDiv .magContent .item p a {
+				font-size: 18px;
+			}
+
+			.div-gun5 ul li {
+				font-size: 14px;
+			}
+
+			.two-left-cont .pic-list-mess .pic-list-per1 {
+				height: 15px;
+			}
+
+			.two-left-cont .pic-list-mess .pic-list-per2 {
+				height: 15px;
+			}
+
+			.two-left-cont .pic-list-mess-rig h2 {
+				margin: 3% 0;
+			}
+
+			.two-left-cont .one-left-bd li .pic-list-mess-rig p {
+				margin-top: 0% !important;
+
+			}
+
+			.pic-list-mess-rig p {
+				width: 55px;
+				height: 55px;
+				line-height: 55px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<!--第一个模块-->
+			<div class="swiper-slide two-wrap swiper-no-swiping">
+				<!--第一屏第一块-->
+				<div class="two-right" style="width: 25%;">
+					<div class="one-left-cont one-left-conts two-left-cont">
+						<div class="panel">
+							<div class="two-right-tit">成品接单量</div>
+							<div class="two-right-zhu elec-one">
+								<div class="elec-bottom OEEChart10"></div>
+							</div>
+						</div>
+						<div class="panel">
+							<div class="two-right-tit two-right-echa">产品研发周期</div>
+							<div class="two-right-zhu elec-two">
+								<div class="elec-top">
+									<p class="one">产品研发周期平均缩短:</p>
+									<p class="two">30%</p>						
+								</div>
+								<div class="elec-main OEEChart11"></div>
+							</div>
+							</div>
+					</div>
+				</div>
+				<!--第一屏第二块-->
+				<div class="two-right" style="width: 25%;">
+					<div class="one-left-cont one-left-conts two-left-cont">
+						<div class="two-right-tit">当月出货量及平均交期</div>
+						<div class="two-right-zhu elec-one" style="height: calc(50% - 50px);">
+							<div class="elec-top">
+								<p class="one">当月接单额:</p>
+								<p class="two">236.80万</p>
+							</div>
+							<div class="elec-bottom OEEChart13"></div>
+						</div>
+						<div class="two-right-tit two-right-echa">能源消耗(调用)</div>
+						<div class="two-right-zhu" style="height: calc(50% - 50px);"></div>
+					</div>
+				</div>
+				<!--第一屏第三块-->
+				<div class="two-right" style="width: 25%;">
+					<div class="two-right-tit">总装生产效率</div>
+					<div class="two-right-zhu elec-three" style="height: calc(50% - 50px);">
+						<div class="elec-top">
+							<table cellpadding="0" cellspacing="0">
+								<tr>
+									<td>月份</td>
+									<td>1</td>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+									<td>8</td>
+									<td>9</td>
+									<td>10</td>
+									<td>11</td>
+									<td>12</td>
+								</tr>
+								<tr>
+									<td>小时数</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+									<td>240</td>
+								</tr>
+								<tr>
+									<td>产量</td>
+									<td>5200</td>
+									<td>5300</td>
+									<td>5200</td>
+									<td>5101</td>
+									<td>5200</td>
+									<td>5102</td>
+									<td>5200</td>
+									<td>5400</td>
+									<td>5200</td>
+									<td>5401</td>
+									<td>5200</td>
+									<td>5402</td>
+								</tr>
+								<tr>
+									<td>台/小时</td>
+									<td>21.7</td>
+									<td>21.25</td>
+									<td>21.7</td>
+									<td>21.3</td>
+									<td>21.7</td>
+									<td>22.5</td>
+									<td>21.7</td>
+									<td>22.5</td>
+									<td>21.7</td>
+									<td>22.5</td>
+									<td>21.7</td>
+									<td>22.5</td>
+								</tr>
+							</table>
+						</div>
+						<div class="elec-main OEEChart14"></div>
+					</div>
+					<div class="two-right-tit two-right-echa">立库(调用)</div>
+					<div id="xgh-four" class="two-right-zhu" style="height: calc(50% - 50px);">
+						<div class="xgh-one" class="magaDiv">
+
+						</div>
+					</div>
+				</div>
+				<!--第一屏第四块-->
+				<div class="two-right" style="width: 25%;">
+					<div class="two-right-tit">月产品不良率</div>
+					<div class="two-right-zhu elec-three" style="height: calc(50% - 50px);">
+						<div class="elec-top">
+							<table cellpadding="0" cellspacing="0">
+								<tr>
+									<td>月份</td>
+									<td>1</td>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+									<td>8</td>
+									<td>9</td>
+									<td>10</td>
+									<td>11</td>
+									<td>12</td>
+								</tr>
+								<tr>
+									<td>生产台数</td>
+									<td>5200</td>
+									<td>5300</td>
+									<td>5200</td>
+									<td>5101</td>
+									<td>5200</td>
+									<td>5102</td>
+									<td>5200</td>
+									<td>5400</td>
+									<td>5200</td>
+									<td>5401</td>
+									<td>5200</td>
+									<td>5402</td>
+								</tr>
+								<tr>
+									<td>不良品数</td>
+									<td>300</td>
+									<td>90</td>
+									<td>300</td>
+									<td>80</td>
+									<td>80</td>
+									<td>75</td>
+									<td>70</td>
+									<td>65</td>
+									<td>60</td>
+									<td>55</td>
+									<td>50</td>
+									<td>45</td>
+								</tr>
+								<tr>
+									<td>不良率%</td>
+									<td>1.92</td>
+									<td>1.76</td>
+									<td>1.92</td>
+									<td>1.57</td>
+									<td>1.54</td>
+									<td>1.47</td>
+									<td>1.38</td>
+									<td>1.20</td>
+									<td>1.15</td>
+									<td>1.02</td>
+									<td>0.90</td>
+									<td>0.82</td>
+								</tr>
+							</table>
+						</div>
+						<div class="elec-main OEEChart15"></div>
+					</div>
+					<div class="two-right-tit two-right-echa">运营成本</div>
+					<div class="two-right-zhu elec-three" style="height: calc(50% - 50px);">
+						<div class="elec-top">
+							<table cellpadding="0" cellspacing="0">
+								<tr>
+									<td>月份</td>
+									<td>1</td>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+									<td>8</td>
+									<td>9</td>
+									<td>10</td>
+									<td>11</td>
+									<td>12</td>
+								</tr>
+								<tr>
+									<td>总成本(万元)</td>
+									<td>4020</td>
+									<td>4000</td>
+									<td>5000</td>
+									<td>6000</td>
+									<td>5500</td>
+									<td>6000</td>
+									<td>6000</td>
+									<td>6500</td>
+									<td>6200</td>
+									<td>5500</td>
+									<td>6001</td>
+									<td>6002</td>
+								</tr>
+								<tr>
+									<td>产量(万)</td>
+									<td>2</td>
+									<td>1.9</td>
+									<td>2</td>
+									<td>2</td>
+									<td>2.5</td>
+									<td>2.12</td>
+									<td>2.22</td>
+									<td>2.55</td>
+									<td>2.3</td>
+									<td>2.2</td>
+									<td>2.5</td>
+									<td>2.6</td>
+								</tr>
+								<tr>
+									<td>单位成本</td>
+									<td>0.20</td>
+									<td>0.21</td>
+									<td>0.25</td>
+									<td>0.30</td>
+									<td>0.22</td>
+									<td>0.28</td>
+									<td>0.27</td>
+									<td>0.25</td>
+									<td>0.27</td>
+									<td>0.25</td>
+									<td>0.24</td>
+									<td>0.23</td>
+								</tr>
+							</table>
+						</div>
+						<div class="elec-main OEEChart16"></div>
+					</div>
+				</div>
+			</div>
+			<!--第二个模块-->
+			<div class="swiper-slide two-wrap swiper-no-swiping">
+				<!--第二屏第一块-->
+				<div class="two-right" style="width: 50%;">
+					<div class="one-left-cont one-left-conts two-left-cont">
+						<div class="two-right-tit">车间一</div>
+						<div style="height:calc(50% - 50px);">
+							<div class="bd one-left-bd" id="proRate"
+								style="overflow:hidden;height:100%;width: 50%;float: left;">
+								<div class="two-right-tit"
+									style="background: #185B70;height: 35px;line-height:35px;font-size: 20px;">生产</div>
+								<ul class="picList one-left-pic" style="width: 100%;height: 100%;float: left;">
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="bd one-left-bd" style="overflow:hidden;height:100%;width: 50%">
+								<div class="two-right-tit" style="height:35px;line-height:35px;font-size: 20px;">质量
+								</div>
+								<div class="magaDiv" style="height: 100%">
+									<div class="div-gun5 magContent">
+										<div class="top excpTot">
+											<div class="item">
+												<h4>异常总数</h4>
+												<p><a href="">10</a></p>
+											</div>
+											<div class="item">
+												<h4>已解决数</h4>
+												<p><a href="">10</a></p>
+											</div>
+											<div class="item">
+												<h4>未解决数</h4>
+												<p><a href="" class="redText">0</a></p>
+											</div>
+										</div>
+										<div class="bottom" style="overflow: hidden;">
+											<ul class="color-change">
+												<li>车间</li>
+												<li>产线</li>
+												<li>异常类型</li>
+												<li>异常状态</li>
+											</ul>
+											<ul class="excp">
+												<ul>
+													<li>车间1</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间1</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间1</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间1</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间1</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间1</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间1</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间1</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间1</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="height: 50px;overflow: hidden;">
+							<div class="two-right-tit two-right-echa" style="width:50%;float: left;">车间一</div>
+							<div class="two-right-tit two-right-echa" style="width:50%;float: left;">车间二</div>
+						</div>
+						<div class="two-right-zhu" style="height: calc(50% - 50px);">
+							<div style="width: 50%;height: 100%;overflow: hidden;float: left;">
+								<div class="OEEChart1" style="width: 50%;height: 100%;float: left;"></div>
+								<div class="OEEChart2" style="width: 50%;height: 100%;float: left;"></div>
+							</div>
+							<div style="width: 50%;height: 100%;overflow: hidden;float: left;">
+								<div class="OEEChart3" style="width: 50%;height: 100%;float: left;"></div>
+								<div class="OEEChart4" style="width: 50%;height: 100%;float: left;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--第二屏第二块-->
+				<div class="two-right" style="width: 50%;">
+					<div class="one-left-cont one-left-conts two-left-cont">
+						<div class="two-right-tit">车间二</div>
+						<div style="height:calc(50% - 50px);">
+							<div class="bd one-left-bd" id="proRate2"
+								style="overflow:hidden;height:100%;width: 50%;float: left;">
+								<div class="two-right-tit" style="height: 35px;line-height:35px;font-size: 20px;">生产
+								</div>
+								<ul class="picList one-left-pic" style="width: 100%;float: left;">
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="bd one-left-bd proRate2" style="overflow:hidden;height:100%;width: 50%">
+								<div class="two-right-tit" style="height:35px;line-height:35px;font-size: 20px;">质量
+								</div>
+								<div class="magaDiv" style="height: 100%">
+									<div class="div-gun5 magContent">
+										<div class="top excpTot">
+											<div class="item">
+												<h4>异常总数</h4>
+												<p><a href="">10</a></p>
+											</div>
+											<div class="item">
+												<h4>已解决数</h4>
+												<p><a href="">10</a></p>
+											</div>
+											<div class="item">
+												<h4>未解决数</h4>
+												<p><a href="" class="redText">0</a></p>
+											</div>
+										</div>
+										<div class="bottom" style="overflow: hidden;">
+											<ul class="color-change">
+												<li>车间</li>
+												<li>产线</li>
+												<li>异常类型</li>
+												<li>异常状态</li>
+											</ul>
+											<ul class="excp">
+												<ul>
+													<li>车间2</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间2</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间2</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间2</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间2</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间2</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间2</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间2</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间2</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="two-right-tit two-right-echa">能源(调用)</div>
+						<div class="two-right-zhu" style="height: calc(50% - 50px);">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--第三个模块-->
+			<div class="swiper-slide two-wrap swiper-no-swiping">
+				<!--第二屏第一块-->
+				<div class="two-right" style="width: 50%;">
+					<div class="one-left-cont one-left-conts two-left-cont">
+						<div class="two-right-tit">车间三</div>
+						<div style="height:calc(50% - 50px);">
+							<div class="bd one-left-bd proRate" id="proRate3"
+								style="overflow:hidden;height:100%;width: 50%;float: left;">
+								<div class="two-right-tit" style="height: 35px;line-height:35px;font-size: 20px;">生产
+								</div>
+								<ul class="picList one-left-pic" style="width: 100%;float: left;">
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>32</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="bd one-left-bd proRate2" style="overflow:hidden;height:100%;width: 50%">
+								<div class="two-right-tit" style="height:35px;line-height:35px;font-size: 20px;">质量
+								</div>
+								<div class="magaDiv" style="height: 100%">
+									<div class="div-gun5 magContent">
+										<div class="top excpTot">
+											<div class="item">
+												<h4>异常总数</h4>
+												<p><a href="">10</a></p>
+											</div>
+											<div class="item">
+												<h4>已解决数</h4>
+												<p><a href="">10</a></p>
+											</div>
+											<div class="item">
+												<h4>未解决数</h4>
+												<p><a href="" class="redText">0</a></p>
+											</div>
+										</div>
+										<div class="bottom" style="overflow: hidden;">
+											<ul class="color-change">
+												<li>车间</li>
+												<li>产线</li>
+												<li>异常类型</li>
+												<li>异常状态</li>
+											</ul>
+											<ul class="excp">
+												<ul>
+													<li>车间3</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间3</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间3</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间3</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间3</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间3</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间3</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间3</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间3</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="height: 50px;overflow: hidden;">
+							<div class="two-right-tit two-right-echa" style="width:50%;float: left;">车间三</div>
+							<div class="two-right-tit two-right-echa" style="width:50%;float: left;">车间四</div>
+						</div>
+						<div class="two-right-zhu" style="height: calc(50% - 50px);">
+							<div style="width: 50%;height: 100%;overflow: hidden;float: left;">
+								<div class="OEEChart5" style="width: 50%;height: 100%;float: left;"></div>
+								<div class="OEEChart6" style="width: 50%;height: 100%;float: left;"></div>
+							</div>
+							<div style="width: 50%;height: 100%;overflow: hidden;float: left;">
+								<div class="OEEChart7" style="width: 50%;height: 100%;float: left;"></div>
+								<div class="OEEChart8" style="width: 50%;height: 100%;float: left;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--第二屏第二块-->
+				<div class="two-right" style="width: 50%;">
+					<div class="one-left-cont one-left-conts two-left-cont">
+						<div class="two-right-tit">车间四</div>
+						<div style="height:calc(50% - 50px);">
+							<div class="bd one-left-bd proRate" id="proRate4"
+								style="overflow:hidden;height:100%;width: 50%;float: left;">
+								<div class="two-right-tit" style="height: 35px;line-height:35px;font-size: 20px;">生产
+								</div>
+								<ul class="picList one-left-pic" style="width: 100%;float: left;">
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量:<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+									<li>
+										<div class="pic-list-mess">
+											<p>计划数量<span>64</span></p>
+											<div class="pic-list-per1"></div>
+											<p>完成数量:<span>64</span></p>
+											<div class="pic-list-per2"></div>
+										</div>
+										<div class="pic-list-mess-rig">
+											<h2>TZ300</h2>
+											<p>100%</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="bd one-left-bd proRate2" style="overflow:hidden;height:100%;width: 50%">
+								<div class="two-right-tit" style="height:35px;line-height:35px;font-size: 20px;">质量
+								</div>
+								<div class="magaDiv" style="height: 100%">
+									<div class="div-gun5 magContent">
+										<div class="top excpTot">
+											<div class="item">
+												<h4>异常总数</h4>
+												<p><a href="">10</a></p>
+											</div>
+											<div class="item">
+												<h4>已解决数</h4>
+												<p><a href="">10</a></p>
+											</div>
+											<div class="item">
+												<h4>未解决数</h4>
+												<p><a href="" class="redText">0</a></p>
+											</div>
+										</div>
+										<div class="bottom" style="overflow: hidden;">
+											<ul class="color-change">
+												<li>车间</li>
+												<li>产线</li>
+												<li>异常类型</li>
+												<li>异常状态</li>
+											</ul>
+											<ul class="excp">
+												<ul>
+													<li>车间4</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间4</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间4</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间4</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间4</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间4</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间4</li>
+													<li>机壳加工线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间4</li>
+													<li>超声波清洁区</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+												<ul>
+													<li>车间4</li>
+													<li>装配2号线</li>
+													<li>质量</li>
+													<li>解决</li>
+												</ul>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="two-right-tit two-right-echa">能源(调用)</div>
+						<div class="two-right-zhu" style="height: calc(50% - 50px);">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Add Arrows -->
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev "></div>
+	</div>
+	<script src="js/swiper.min.js"></script>
+	<script type="text/javascript">
+		jQuery(".div-gun5").slide({ mainCell: ".excp", autoPlay: true, effect: "topMarquee", vis: 7, interTime: 50 });
+		jQuery(".cost").slide({ mainCell: ".excp2", autoPlay: true, effect: "topMarquee", vis: 4, interTime: 50 });
+		jQuery(".two-right").slide({ mainCell: "#proRate ul", autoPlay: true, effect: "topMarquee", vis: 4, interTime: 50 });
+		jQuery(".two-right").slide({ mainCell: "#proRate2 ul", autoPlay: true, effect: "topMarquee", vis: 4, interTime: 50 });
+		jQuery(".two-right").slide({ mainCell: "#proRate3 ul", autoPlay: true, effect: "topMarquee", vis: 4, interTime: 50 });
+		jQuery(".two-right").slide({ mainCell: "#proRate4 ul", autoPlay: true, effect: "topMarquee", vis: 4, interTime: 50 });
+		function init() {
+			myChart1 = echarts.init(document.getElementsByClassName('OEEChart1')[0]);
+			myChart2 = echarts.init(document.getElementsByClassName('OEEChart2')[0]);
+			myChart3 = echarts.init(document.getElementsByClassName('OEEChart3')[0]);
+			myChart4 = echarts.init(document.getElementsByClassName('OEEChart4')[0]);
+			myChart5 = echarts.init(document.getElementsByClassName('OEEChart5')[0]);
+			myChart6 = echarts.init(document.getElementsByClassName('OEEChart6')[0]);
+			myChart7 = echarts.init(document.getElementsByClassName('OEEChart7')[0]);
+			myChart8 = echarts.init(document.getElementsByClassName('OEEChart8')[0]);
+			myChart10 = echarts.init(document.getElementsByClassName('OEEChart10')[0]);
+			myChart11 = echarts.init(document.getElementsByClassName('OEEChart11')[0]);
+			myChart13 = echarts.init(document.getElementsByClassName('OEEChart13')[0]);
+			myChart14 = echarts.init(document.getElementsByClassName('OEEChart14')[0]);
+			myChart15 = echarts.init(document.getElementsByClassName('OEEChart15')[0]);
+			myChart16 = echarts.init(document.getElementsByClassName('OEEChart16')[0]);
+			var swiper = new Swiper('.swiper-container', {
+				speed: 2000,
+				direction: 'horizontal',
+				loop: true,
+				autoplayDisableOnInteraction: false,
+				observer: true,//修改swiper自己或子元素时，自动初始化swiper
+				observeParents: true,//修改swiper的父元素时，自动初始化swiper
+				nextButton: '.swiper-button-next',
+				prevButton: '.swiper-button-prev',
+				onSlideChangeEnd(swiper) {
+					if (swiper.activeIndex == 4) {
+						swiper.slideTo(1, 0, false);
+					} else if (swiper.activeIndex == 0) {
+						swiper.slideTo(3, 0, false);
+					}
+				}
+			});
+		}
+		init();
+		//第一个图
+		option = {
+			title: {
+				x: 'center',
+				text: '车间1设备故障率',
+				top: '10%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '21'
+				}
+			},
+			tooltip: {
+				formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				},
+			},
+			series: [
+				{
+					name: '月计划达成率',
+					type: 'gauge',
+					radius: '90%',
+					axisLine: {            // 坐标轴线
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+							width: 8
+						}
+					},
+					axisTick: {            // 坐标轴小标记
+						splitNumber: 10,   // 每份split细分多少段
+						length: 12,        // 属性length控制线长
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: 'auto'
+						}
+					},
+					axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'auto'
+						}
+					},
+					splitLine: {           // 分隔线
+						show: true,        // 默认显示，属性show控制显示与否
+						length: 30,         // 属性length控制线长
+						lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+							color: 'auto'
+						}
+					},
+					pointer: {
+						width: 5
+					},
+					title: {
+						show: true,
+						offsetCenter: [0, '-20%'],       // x, y，单位px
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight: 'bolder'
+						}
+					},
+					detail: {
+						formatter: '{value}%',
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'green',
+							fontWeight: 'bolder'
+						}
+					},
+					data: [{ value: 1.5, name: 'OEE' }]
+				}
+			]
+		};
+		myChart1.clear();
+		myChart1.setOption(option);
+		//第二个图
+		option = {
+			title: {
+				x: 'center',
+				text: '车间1人员在岗率',
+				top: '10%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '21'
+				}
+			},
+			tooltip: {
+				formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				}
+			},
+			series: [
+				{
+					name: '月计划达成率',
+					type: 'gauge',
+					radius: '90%',
+					axisLine: {            // 坐标轴线
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+							width: 8
+						}
+					},
+					axisTick: {            // 坐标轴小标记
+						splitNumber: 10,   // 每份split细分多少段
+						length: 12,        // 属性length控制线长
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: 'auto'
+						}
+					},
+					axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'auto'
+						}
+					},
+					splitLine: {           // 分隔线
+						show: true,        // 默认显示，属性show控制显示与否
+						length: 30,         // 属性length控制线长
+						lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+							color: 'auto'
+						}
+					},
+					pointer: {
+						width: 5
+					},
+					title: {
+						show: true,
+						offsetCenter: [0, '-20%'],       // x, y，单位px
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight: 'bolder'
+						}
+					},
+					detail: {
+						formatter: '{value}%',
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'black',
+							fontWeight: 'bolder'
+						}
+					},
+					data: [{ value: 85.33, name: 'OEE' }]
+				}
+			]
+		};
+		myChart2.clear();
+		myChart2.setOption(option);
+		//第三个图
+		option = {
+			title: {
+				x: 'center',
+				text: '车间2设备故障率',
+				top: '10%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '21'
+				}
+			},
+			tooltip: {
+				formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				}
+			},
+			series: [
+				{
+					name: '车间1人员在岗率',
+					type: 'gauge',
+					radius: '90%',
+					axisLine: {            // 坐标轴线
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+							width: 8
+						}
+					},
+					axisTick: {            // 坐标轴小标记
+						splitNumber: 10,   // 每份split细分多少段
+						length: 12,        // 属性length控制线长
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: 'auto'
+						}
+					},
+					axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'auto'
+						}
+					},
+					splitLine: {           // 分隔线
+						show: true,        // 默认显示，属性show控制显示与否
+						length: 30,         // 属性length控制线长
+						lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+							color: 'auto'
+						}
+					},
+					pointer: {
+						width: 6
+					},
+					title: {
+						show: true,
+						offsetCenter: [0, '-20%'],       // x, y，单位px
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight: 'bolder'
+						}
+					},
+					detail: {
+						formatter: '{value}%',
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'green',
+							fontWeight: 'bolder'
+						}
+					},
+					data: [{ value: 2, name: 'OEE' }]
+				}
+			]
+		};
+		myChart3.clear();
+		myChart3.setOption(option);
+		//第四个图
+		option = {
+			title: {
+				x: 'center',
+				text: '车间2人员在岗率',
+				y: '10%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '21'
+				}
+			},
+			tooltip: {
+				formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				}
+			},
+			series: [
+				{
+					name: '车间2人员在岗率',
+					type: 'gauge',
+					radius: '90%',
+					axisLine: {            // 坐标轴线
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+							width: 8
+						}
+					},
+					axisTick: {            // 坐标轴小标记
+						splitNumber: 10,   // 每份split细分多少段
+						length: 12,        // 属性length控制线长
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: 'auto'
+						}
+					},
+					axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'auto'
+						}
+					},
+					splitLine: {           // 分隔线
+						show: true,        // 默认显示，属性show控制显示与否
+						length: 30,         // 属性length控制线长
+						lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+							color: 'auto'
+						}
+					},
+					pointer: {
+						width: 5
+					},
+					title: {
+						show: true,
+						offsetCenter: [0, '-20%'],       // x, y，单位px
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight: 'bolder'
+						}
+					},
+					detail: {
+						formatter: '{value}%',
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'red',
+							fontWeight: 'bolder'
+						}
+					},
+					data: [{ value: 86.36, name: 'OEE' }]
+				}
+			]
+		};
+		myChart4.setOption(option);
+		//第五个图
+		option = {
+			title: {
+				x: 'center',
+				text: '车间3设备故障率',
+				top: '10%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '21'
+				}
+			},
+			tooltip: {
+				formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				},
+			},
+			series: [
+				{
+					name: '车间3设备故障率',
+					type: 'gauge',
+					radius: '90%',
+					axisLine: {            // 坐标轴线
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+							width: 8
+						}
+					},
+					axisTick: {            // 坐标轴小标记
+						splitNumber: 10,   // 每份split细分多少段
+						length: 12,        // 属性length控制线长
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: 'auto'
+						}
+					},
+					axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'auto'
+						}
+					},
+					splitLine: {           // 分隔线
+						show: true,        // 默认显示，属性show控制显示与否
+						length: 30,         // 属性length控制线长
+						lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+							color: 'auto'
+						}
+					},
+					pointer: {
+						width: 5
+					},
+					title: {
+						show: true,
+						offsetCenter: [0, '-20%'],       // x, y，单位px
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight: 'bolder'
+						}
+					},
+					detail: {
+						formatter: '{value}%',
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'green',
+							fontWeight: 'bolder'
+						}
+					},
+					data: [{ value: 1.5, name: 'OEE' }]
+				}
+			]
+		};
+		myChart5.setOption(option);
+		//第六个图
+		option = {
+			title: {
+				x: 'center',
+				text: '车间3人员在岗率',
+				top: '10%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '21'
+				}
+			},
+			tooltip: {
+				formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				}
+			},
+			series: [
+				{
+					name: '车间4设备故障率',
+					type: 'gauge',
+					radius: '90%',
+					axisLine: {            // 坐标轴线
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+							width: 8
+						}
+					},
+					axisTick: {            // 坐标轴小标记
+						splitNumber: 10,   // 每份split细分多少段
+						length: 12,        // 属性length控制线长
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: 'auto'
+						}
+					},
+					axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'auto'
+						}
+					},
+					splitLine: {           // 分隔线
+						show: true,        // 默认显示，属性show控制显示与否
+						length: 30,         // 属性length控制线长
+						lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+							color: 'auto'
+						}
+					},
+					pointer: {
+						width: 5
+					},
+					title: {
+						show: true,
+						offsetCenter: [0, '-20%'],       // x, y，单位px
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight: 'bolder'
+						}
+					},
+					detail: {
+						formatter: '{value}%',
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'red',
+							fontWeight: 'bolder'
+						}
+					},
+					data: [{ value: 85.36, name: 'OEE' }]
+				}
+			]
+		};
+		myChart6.clear();
+		myChart6.setOption(option);
+		//第七个图
+		option = {
+			title: {
+				x: 'center',
+				text: '车间4设备故障率',
+				top: '10%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '21'
+				}
+			},
+			tooltip: {
+				formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				}
+			},
+			series: [
+				{
+					name: '车间3人员在岗率',
+					type: 'gauge',
+					radius: '90%',
+					axisLine: {            // 坐标轴线
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+							width: 8
+						}
+					},
+					axisTick: {            // 坐标轴小标记
+						splitNumber: 10,   // 每份split细分多少段
+						length: 12,        // 属性length控制线长
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: 'auto'
+						}
+					},
+					axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'auto'
+						}
+					},
+					splitLine: {           // 分隔线
+						show: true,        // 默认显示，属性show控制显示与否
+						length: 30,         // 属性length控制线长
+						lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+							color: 'auto'
+						}
+					},
+					pointer: {
+						width: 6
+					},
+					title: {
+						show: true,
+						offsetCenter: [0, '-20%'],       // x, y，单位px
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight: 'bolder'
+						}
+					},
+					detail: {
+						formatter: '{value}%',
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'green',
+							fontWeight: 'bolder'
+						}
+					},
+					data: [{ value: 2, name: 'OEE' }]
+				}
+			]
+		};
+		myChart7.clear();
+		myChart7.setOption(option);
+		//第八个图
+		option = {
+			title: {
+				x: 'center',
+				text: '车间4人员在岗率',
+				y: '10%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '21'
+				}
+			},
+			tooltip: {
+				formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+				show: false,
+				feature: {
+					mark: { show: true },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				}
+			},
+			series: [
+				{
+					name: '车间4人员在岗率',
+					type: 'gauge',
+					radius: '90%',
+					axisLine: {            // 坐标轴线
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+							width: 8
+						}
+					},
+					axisTick: {            // 坐标轴小标记
+						splitNumber: 10,   // 每份split细分多少段
+						length: 12,        // 属性length控制线长
+						lineStyle: {       // 属性lineStyle控制线条样式
+							color: 'auto'
+						}
+					},
+					axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'auto'
+						}
+					},
+					splitLine: {           // 分隔线
+						show: true,        // 默认显示，属性show控制显示与否
+						length: 30,         // 属性length控制线长
+						lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+							color: 'auto'
+						}
+					},
+					pointer: {
+						width: 5
+					},
+					title: {
+						show: true,
+						offsetCenter: [0, '-20%'],       // x, y，单位px
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight: 'bolder'
+						}
+					},
+					detail: {
+						formatter: '{value}%',
+						textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							color: 'red',
+							fontWeight: 'bolder'
+						}
+					},
+					data: [{ value: 86.36, name: 'OEE' }]
+				}
+			]
+		};
+		myChart8.clear();
+		myChart8.setOption(option);
+		//第十个图
+		option = {
+			legend: {
+				select: true,
+				show: true,
+				top: '5%',
+				textStyle: {
+					color: '#fff'
+				},
+				data: ['订单准交率'],
+			},
+			xAxis: {
+				type: 'category',
+				data: ['产品1', '产品2', '产品3', '产品4', '产品5', '产品6', '产品7'],
+				splitLine: {
+					show: false,
+				},
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+				axisLabel: {
+					interval: 0,
+				},
+			},
+			yAxis: {
+				name: '成品接单量(KV)',
+				type: 'value',
+				splitLine: {
+					show: true,
+				},
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+			},
+			grid: {
+				show: true,
+				top: '25%',
+				left: '3%',
+				right: '2%',
+				bottom: '3%',
+				containLabel: true,
+			},
+			series: [{
+				name: '订单准交率',
+				data: [120, 200, 150, 80, 70, 110, 130],
+				type: 'bar',
+				barWidth: 20,
+				itemStyle: {
+					normal: {
+						barBorderRadius: 5,
+						color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+							offset: 0,
+							color: '#99d9ea'
+						}, {
+							offset: 1,
+							color: '#3fa7dc'
+						}]),
+						shadowColor: 'rgba(0, 0, 0, 0.4)',
+						shadowBlur: 10
+					}
+				}
+			}]
+		};
+		myChart10.clear();
+		myChart10.setOption(option);
+		//第十一个图
+		option = {
+			title: {
+				x: 'center',
+				text: '产品研发周期',
+				top: '2%',
+				left: '45%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '16'
+				}
+			},
+			yAxis: {
+				type: 'category',
+				data: ['YE2', 'YE3', 'YE4', 'YBX3', 'YB3'],
+				splitLine: {
+					show: false,
+				},
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+				axisLabel: {
+					interval: 0,
+				},
+			},
+			xAxis: {
+				type: 'value',
+				splitLine: {
+					show: true,
+				},
+				min: 0,
+				max: 35,
+				splitNumber: 8,
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+			},
+			grid: {
+				show: true,
+				top: '12%',
+				left: '3%',
+				right: '2%',
+				bottom: '3%',
+				containLabel: true,
+			},
+			series: [{
+				data: [20, 15, 25, 25, 30],
+				type: 'bar',
+				barWidth: 20,
+				itemStyle: {
+					normal: {
+						barBorderRadius: 5,
+						color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+							offset: 0,
+							color: '#99d9ea'
+						}, {
+							offset: 1,
+							color: '#3fa7dc'
+						}]),
+						shadowColor: 'rgba(0, 0, 0, 0.4)',
+						shadowBlur: 10
+					}
+				}
+			}]
+		};
+		myChart11.clear();
+		myChart11.setOption(option);
+		//第十三个图
+		option = {
+			legend: {
+				select: false,
+				show: true,
+				top: '5%',
+				textStyle: {
+					color: '#fff'
+				},
+				data: ['订单平均交额'],
+			},
+			xAxis: {
+				type: 'category',
+				data: ['产品1', '产品2', '产品3', '产品4', '产品5', '产品6', '产品7'],
+				splitLine: {
+					show: false,
+				},
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+				axisLabel: {
+					interval: 0,
+				},
+			},
+			yAxis: {
+				name: '订单平均交额',
+				type: 'value',
+				splitLine: {
+					show: true,
+				},
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+			},
+			grid: {
+				show: true,
+				top: '25%',
+				left: '3%',
+				right: '2%',
+				bottom: '3%',
+				containLabel: true,
+			},
+			series: [{
+				name: '订单平均交额',
+				data: [120, 200, 150, 80, 70, 110, 130],
+				type: 'bar',
+				barWidth: 20,
+				itemStyle: {
+					normal: {
+						barBorderRadius: 5,
+						color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+							offset: 0,
+							color: '#99d9ea'
+						}, {
+							offset: 1,
+							color: '#3fa7dc'
+						}]),
+						shadowColor: 'rgba(0, 0, 0, 0.4)',
+						shadowBlur: 10
+					}
+				}
+			}]
+		};
+		myChart13.clear();
+		myChart13.setOption(option);
+		//第十四个图
+		option = {
+			title: {
+				x: 'center',
+				text: '单台生产效率(台/小时)',
+				top: '2%',
+				left: '35%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '16'
+				}
+			},
+			xAxis: {
+				type: 'category',
+				data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+				splitLine: {
+					show: false,
+				},
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+				axisLabel: {
+					interval: 0,
+				},
+			},
+			yAxis: {
+				type: 'value',
+				splitLine: {
+					show: true,
+				},
+				min: 20.6,
+				max: 22.8,
+				splitNumber: 12,
+				axisLine: {
+					lineStyle: {
+						color: '#fff',
+					},
+				},
+			},
+			grid: {
+				show: true,
+				top: '12%',
+				left: '3%',
+				right: '2%',
+				bottom: '3%',
+				containLabel: true,
+			},
+			series: [{
+				data: [21.7, 21.25, 21.7, 21.3, 21.7, 22.5, 21.7, 22.5, 21.7, 22.5, 21.7, 22.5],
+				type: 'bar',
+				itemStyle: {
+					normal: {
+						color: 'blue',
+						label: {
+							show: true,
+							position: 'top',
+							textStyle: {
+								color: '#fff',
+							},
+						},
+					}
+				}
+			}]
+		};
+		myChart14.clear();
+		myChart14.setOption(option);
+		//第十五个图
+		option = {
+			title: {
+				x: 'center',
+				text: '不良品率',
+				top: '2%',
+				left: '40%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '16'
+				}
+			},
+			xAxis: {
+				type: 'category',
+				data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+				splitLine: {
+					show: false,
+				},
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+				axisLabel: {
+					interval: 0,
+				},
+			},
+			yAxis: {
+				type: 'value',
+				splitLine: {
+					show: true,
+				},
+				min: 0.00,
+				max: 2.50,
+				splitNumber: 6,
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+			},
+			grid: {
+				show: true,
+				top: '12%',
+				left: '3%',
+				right: '2%',
+				bottom: '3%',
+				containLabel: true,
+			},
+			series: [{
+				data: [1.92, 1.76, 1.92, 1.57, 1.54, 1.47, 1.38, 1.20, 1.15, 1.02, 0.90, 0.82],
+				type: 'bar',
+				itemStyle: {
+					normal: {
+						color: 'blue',
+						label: {
+							show: true,
+							position: 'top',
+							textStyle: {
+								color: '#fff',
+							},
+						},
+					}
+				}
+			}]
+		};
+		myChart15.clear();
+		myChart15.setOption(option);
+		//第十六个图
+		option = {
+			title: {
+				x: 'center',
+				text: '单位运营成本',
+				top: '2%',
+				left: '45%',
+				textStyle: {
+					color: '#f5f5f5',
+					fontSize: '16'
+				}
+			},
+			xAxis: {
+				type: 'category',
+				data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+				splitLine: {
+					show: false,
+				},
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+				axisLabel: {
+					interval: 0,
+				},
+			},
+			yAxis: {
+				type: 'value',
+				splitLine: {
+					show: true,
+				},
+				min: 0.00,
+				max: 0.35,
+				splitNumber: 8,
+				axisLine: {
+					lineStyle: {
+						color: '#fff'
+					},
+				},
+			},
+			grid: {
+				show: true,
+				top: '12%',
+				left: '3%',
+				right: '2%',
+				bottom: '3%',
+				containLabel: true,
+			},
+			series: [{
+				data: [0.20, 0.21, 0.25, 0.30, 0.22, 0.28, 0.27, 0.25, 0.27, 0.25, 0.24, 0.23],
+				type: 'bar',
+				itemStyle: {
+					normal: {
+						color: '#ED7D31',
+						label: {
+							show: true,
+							position: 'top',
+							textStyle: {
+								color: '#fff',
+							},
+						},
+					}
+				}
+			}]
+		};
+		myChart16.clear();
+		myChart16.setOption(option);
+		//浏览器大小改变时重置大小
+		window.addEventListener("resize", function () {
+			//重置容器高宽
+			myChart1.resize();
+			myChart2.resize();
+			myChart3.resize();
+			myChart4.resize();
+			myChart5.resize();
+			myChart6.resize();
+			myChart7.resize();
+			myChart8.resize();
+			myChart10.resize();
+			myChart11.resize();
+			myChart13.resize();
+			myChart14.resize();
+			myChart15.resize();
+			myChart16.resize();
+		});
+	</script>
+</body>
+
+</html>
