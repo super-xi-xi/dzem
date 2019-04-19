@@ -11,7 +11,7 @@ li{
 		height: 100%;
     }
 body {
-       	font-family: "微软雅黑";
+	font-family: "Microsoft Yahei", Arial, sans-serif;
 		font-size: 13px;
 		color: #333;
         margin: 0;
@@ -86,8 +86,6 @@ html {
 	height: 32%;
 	margin-bottom: 10px;
 	overflow: hidden;*/
-}
-.one-left-bd .one-left-pic li:nth-child(1) .one-left-top{
 }
 .one-left-cont .bd .pic-list-mess p{
 	color: #fff;
@@ -191,8 +189,6 @@ html {
     background: #41465F;
 }
 /*第2屏css*/
-.two-wrap{
-}
 .two-wrap .two-left{
 	width: 30%;
 	height: 100%;
@@ -216,20 +212,29 @@ html {
 	justify-content: center;
 }
 
-.elec-two .elec-top .one,
-.elec-two .elec-top .two {
-	color: #fff;
+.one,
+.two {
+	color: rgba(255, 255, 255, 0.7);
 }
 
-.elec-two .elec-top .one {
-	font-size: 20px;
-	margin-right: 10px;
-
+.one {
+	font-weight: normal;
+    font-family: "Microsoft Yahei", Arial, sans-serif;
+    font-size: 18px;
 }
 
-.elec-two .elec-top .two {
-	font-size: 25px;
-	vertical-align: middle;
+.two {
+	background-color: rgba(51,51,51,0);
+    display: inline-block;
+    letter-spacing: 0.02em;
+    text-indent: 0.02em;
+    height: auto;
+    line-height: normal;
+    font-size: 40px;
+    font-weight: lighter;
+    letter-spacing: 0.02em;
+    margin-right: 0em;
+    border-radius: 6px;
 }
 
 .elec-two .elec-bottom {
@@ -247,11 +252,16 @@ html {
 
 .two-right .two-right-tit{
 	height: 50px;
-	font-size: 25px;
-	font-weight: bold;
-	color: #fff;
-    box-shadow: 4px 3px 15px #000;
-    line-height: 50px;
+	line-height: 50px;
+	border-radius: 10px;
+
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    font-family: "Microsoft Yahei", Arial, sans-serif;
+    font-size: 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 /*第二屏css*/
 .two-left-cont .picList li{
@@ -289,14 +299,10 @@ html {
 .two-left-cont .one-left-bd{
 	height: 96%;
 }
-.two-left-cont li{
-	/*background: -webkit-gradient(linear, 0 0, 0 bottom, from(#256c8e), to(#023548)) !important;*/
-}
+
 .two-left-cont li .pic-list-mess-rig p{
 	font-size: 16px;
 }
-
-
 
 .two-mid .two-right-tit{
 	height: 4%;
